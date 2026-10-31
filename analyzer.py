@@ -14,8 +14,19 @@ def gc_content(seq):
     gc = seq.count("G") + seq.count("C")
     return round(gc / len(seq) * 100, 2)
 
+def transcribe(seq):
+    """Convert DNA to RNA by replacing T with U."""
+    return seq.replace("T", "U")
+
+def reverse_complement(seq):
+    """Return the reverse complement of a DNA sequence."""
+    complement = {"A": "T", "T": "A", "C": "G", "G": "C"}
+    return "".join(complement[base] for base in reversed(seq))
+
 
 if __name__ == "__main__":
     print(validate_sequence("atgc gatc"))
     print(validate_sequence("ATGX"))
     print(gc_content("ATGC"))
+    print(transcribe("ATGC"))
+    print(reverse_complement("ATGC"))
