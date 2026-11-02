@@ -9,6 +9,7 @@ A Python tool that validates a DNA sequence and computes GC content, RNA transcr
 - **GC content:** percentage of G and C bases in the sequence
 - **Transcription:** converts DNA to RNA by replacing T with U
 - **Reverse complement:** generates the opposite strand, read 5' to 3'
+- **Codon translation:** translates DNA into protein
 
 ## Requirements
 
@@ -34,7 +35,9 @@ Base counts:        A=3 T=2 C=3 G=2
 GC content:         50.0%
 RNA transcript:     AGCUUAAGCC
 Reverse complement: GGCTTAAGCT
+Protein (frame 1):  SLS
 ```
+Protein letters are standard one-letter amino acid codes ( e.g. M = Methionine, * = Stop codon ).
 
 Invalid input is rejected:
 
@@ -67,7 +70,6 @@ python -m pytest
 ## Future Improvements
 
 - A bar chart of nucleotide counts
-- Codon translation to amino acids
 - Motif search
 - FASTA file input
 
