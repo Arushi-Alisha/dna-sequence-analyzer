@@ -1,4 +1,4 @@
-from analyzer import validate_sequence, gc_content, transcribe, reverse_complement, nucleotide_counts
+from analyzer import validate_sequence, gc_content, transcribe, reverse_complement, nucleotide_counts, translate
 
 
 def main():
@@ -18,6 +18,7 @@ def main():
     print(f"GC content:         {gc_content(seq)}%")
     print(f"RNA transcript:     {transcribe(seq)}")
     print(f"Reverse complement: {reverse_complement(seq)}")
+    print(f"Protein (frame 1):  {translate(seq)}")
 
 
 if __name__ == "__main__":

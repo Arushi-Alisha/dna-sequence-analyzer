@@ -1,4 +1,4 @@
-from analyzer import validate_sequence, gc_content, transcribe, reverse_complement, nucleotide_counts
+from analyzer import validate_sequence, gc_content, transcribe, reverse_complement, nucleotide_counts, translate
 
 def test_validate_cleans_input():
     assert validate_sequence("atgc gatc") == "ATGCGATC"
@@ -39,3 +39,12 @@ def test_nucleotide_counts():
 
 def test_nucleotide_counts_missing_bases():
     assert nucleotide_counts("AAAA") == {"A": 4, "T": 0, "C": 0, "G": 0}
+
+def test_translate():
+    assert translate("ATGGCCTAA") == "MA*"
+
+def test_translate_ignores_leftover_bases():
+    assert translate("ATGGC") == "M"
+
+def test_translate_empty():
+    assert translate("") == ""
