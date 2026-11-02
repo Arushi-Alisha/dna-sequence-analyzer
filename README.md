@@ -50,6 +50,13 @@ dna-sequence-analyzer/
 └── README.md
 ```
 
+## Running Tests
+
+```
+python -m pip install pytest
+python -m pytest
+```
+
 ## How it Works
 
 - DNA strands are antiparallel, so the opposite strand is the *reverse* complement, not just the complement.
@@ -61,7 +68,6 @@ dna-sequence-analyzer/
 - Codon translation to amino acids
 - Motif search
 - FASTA file input
-- Unit tests with pytest
 
 ## Author
 
