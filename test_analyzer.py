@@ -1,4 +1,4 @@
-from analyzer import validate_sequence, gc_content, transcribe, reverse_complement
+from analyzer import validate_sequence, gc_content, transcribe, reverse_complement, nucleotide_counts
 
 def test_validate_cleans_input():
     assert validate_sequence("atgc gatc") == "ATGCGATC"
@@ -33,3 +33,9 @@ def test_reverse_complement_longer():
 def test_reverse_complement_palindrome():
     # GAATTC is a real enzyme cut site and equals its own reverse complement
     assert reverse_complement("GAATTC") == "GAATTC"
+
+def test_nucleotide_counts():
+    assert nucleotide_counts("AGCTTAAGCC") == {"A": 3, "T": 2, "C": 3, "G": 2}
+
+def test_nucleotide_counts_missing_bases():
+    assert nucleotide_counts("AAAA") == {"A": 4, "T": 0, "C": 0, "G": 0}

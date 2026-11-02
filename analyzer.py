@@ -23,6 +23,10 @@ def reverse_complement(seq):
     complement = {"A": "T", "T": "A", "C": "G", "G": "C"}
     return "".join(complement[base] for base in reversed(seq))
 
+def nucleotide_counts(seq):
+    """Return a dictionary with the count of each base."""
+    return {base: seq.count(base) for base in "ATCG"}
+
 
 if __name__ == "__main__":
     print(validate_sequence("atgc gatc"))
