@@ -5,6 +5,7 @@ A Python tool that validates a DNA sequence and computes GC content, RNA transcr
 ## Features
 
 - **Validation:** accepts only A, T, C, G (case-insensitive; spaces and new lines are ignored)
+- **Nucleotide counts:** counts number of A, T, C, and G bases
 - **GC content:** percentage of G and C bases in the sequence
 - **Transcription:** converts DNA to RNA by replacing T with U
 - **Reverse complement:** generates the opposite strand, read 5' to 3'
@@ -29,6 +30,7 @@ Enter a DNA sequence: agcttaagcc
 
 Sequence:           AGCTTAAGCC
 Length:             10 bases
+Base counts:        A=3 T=2 C=3 G=2
 GC content:         50.0%
 RNA transcript:     AGCUUAAGCC
 Reverse complement: GGCTTAAGCT
@@ -64,7 +66,7 @@ python -m pytest
 
 ## Future Improvements
 
-- Nucleotide counts with a bar chart
+- A bar chart of nucleotide counts
 - Codon translation to amino acids
 - Motif search
 - FASTA file input
