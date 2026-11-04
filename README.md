@@ -19,7 +19,7 @@ A Python tool that validates a DNA sequence and computes GC content, RNA transcr
 ## How to Run
 
 ```
-git clone https://github.com/Arushi-Alisha?dna-sequence-analyzer.git
+git clone https://github.com/Arushi-Alisha/dna-sequence-analyzer.git
 cd dna-sequence-analyzer
 python main.py
 ```
