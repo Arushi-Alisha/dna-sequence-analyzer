@@ -56,6 +56,30 @@ def translate(seq):
     return protein
 
 
+def parse_fasta(text):
+    """Parse FASTA text and return (header, sequence) for the first record."""
+    header = ""
+    parts = []
+    found_header = False
+    for line in text.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        if line.startswith(">"):
+            if found_header:
+                break
+            found_header = True
+            header = line[1:].strip()
+        else:
+            parts.append(line)
+    return header, "".join(parts)
+
+def read_fasta(filename):
+    """Read a FASTA file and return (header, sequence)."""
+    with open(filename) as f:
+        return parse_fasta(f.read())
+
+
 if __name__ == "__main__":
     print(validate_sequence("atgc gatc"))
     print(validate_sequence("ATGX"))

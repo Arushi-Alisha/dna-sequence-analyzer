@@ -1,9 +1,18 @@
-from analyzer import validate_sequence, gc_content, transcribe, reverse_complement, nucleotide_counts, translate
+from analyzer import validate_sequence, gc_content, transcribe, reverse_complement, nucleotide_counts, translate, read_fasta
 
 
 def main():
     print("=== DNA Sequence Analyzer ===")
-    raw = input("Enter a DNA sequence: ")
+    raw = input("Enter a DNA sequence or a FASTA file name: ").strip()
+
+    if raw.lower().endswith((".fasta", ".fa")):
+        filename = raw
+        try:
+            header, raw = read_fasta(filename)
+        except FileNotFoundError:
+            print(f"File not found: {filename}")
+            return
+        print(f"Loaded FASTA record: {header}")
 
     seq = validate_sequence(raw)
     if seq is None:

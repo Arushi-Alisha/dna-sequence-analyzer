@@ -1,4 +1,4 @@
-from analyzer import validate_sequence, gc_content, transcribe, reverse_complement, nucleotide_counts, translate
+from analyzer import validate_sequence, gc_content, transcribe, reverse_complement, nucleotide_counts, translate, parse_fasta, read_fasta
 
 def test_validate_cleans_input():
     assert validate_sequence("atgc gatc") == "ATGCGATC"
@@ -48,3 +48,19 @@ def test_translate_ignores_leftover_bases():
 
 def test_translate_empty():
     assert translate("") == ""
+
+def test_parse_fasta_joins_lines():
+    text = ">gene1 example\nATGC\nGATC\n"
+    assert parse_fasta(text) == ("gene1 example", "ATGCGATC")
+
+def test_parse_fasta_reads_first_record_only():
+    text = ">a\nAT\n>b\nGC\n"
+    assert parse_fasta(text) == ("a", "AT")
+
+def test_parse_fasta_without_header():
+    assert parse_fasta("ATGC") == ("", "ATGC")
+
+def test_read_fasta(tmp_path):
+    path = tmp_path / "test.fasta"
+    path.write_text(">seq\nATGC\n")
+    assert read_fasta(str(path)) == ("seq", "ATGC")
